@@ -5,7 +5,12 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'Project Epoch Launch Countdown',
-  description: 'Made by Alex Gabe'
+  description: 'Made by Alex Gabe',
+  icons: {
+    icon: [
+      { url: '/favicons/favicon.png' }
+    ]
+  }
 }
 
 export default function RootLayout({
