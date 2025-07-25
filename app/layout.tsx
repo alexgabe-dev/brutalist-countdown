@@ -4,7 +4,7 @@ import { GeistMono } from 'geist/font/mono'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'epoch-countdown',
+  title: 'Project Epoch Launch Countdown',
   description: 'Made by Alex Gabe'
 }
 
@@ -14,17 +14,28 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <head>
-        <style>{`
+    <>
+      {/* 
+      _    _              ____       _          
+     / \  | | _____  __  / ___| __ _| |__   ___ 
+    / _ \ | |/ _ \ \/ / | |  _ / _` | '_ \ / _ \ 
+   / ___ \| |  __/>  <  | |_| | (_| | |_) |  __/ 
+  /_/   \_\_|\___/_/\_\  \____|\_,_|_.__/ \___| 
+ 
+  2025.07.25
+      */}
+      <html lang="en">
+        <head>
+          <style>{`
 html {
   font-family: ${GeistSans.style.fontFamily};
   --font-sans: ${GeistSans.variable};
   --font-mono: ${GeistMono.variable};
 }
         `}</style>
-      </head>
-      <body>{children}</body>
-    </html>
+        </head>
+        <body>{children}</body>
+      </html>
+    </>
   )
 }

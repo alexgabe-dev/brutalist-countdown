@@ -1,5 +1,15 @@
 "use client"
 
+{/* 
+     _    _              ____       _          
+    / \  | | _____  __  / ___| __ _| |__   ___ 
+   / _ \ | |/ _ \ \/ / | |  _ / _` | '_ \ / _ \ 
+  / ___ \| |  __/>  <  | |_| | (_| | |_) |  __/ 
+ /_/   \_\_|\___/_/\_\  \____|\_,_|_.__/ \___| 
+ 
+ 2025.07.25
+*/}
+
 import { useState, useEffect } from "react"
 
 export default function ProjectEpochCountdown() {
@@ -14,6 +24,16 @@ export default function ProjectEpochCountdown() {
 
   useEffect(() => {
     setMounted(true)
+    console.log(
+      "%c     _    _              ____       _          \n" +
+      "    / \\  | | _____  __  / ___| __ _| |__   ___ \n" +
+      "   / _ \\ | |/ _ \\ \\/ / | |  _ / _` | '_ \\ / _ \\ \n" +
+      "  / ___ \\| |  __/>  <  | |_| | (_| | |_) |  __/ \n" +
+      " /_/   \\_\\_|\\___/_/\\_\\  \\____|\\_,_|_.__/ \\___| \n" +
+      " \n" +
+      " 2025.07.25",
+      "color: rgb(239, 68, 68)"
+    )
 
     const targetDate = new Date("2025-07-26T18:00:00+02:00")
 
