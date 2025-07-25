@@ -21,6 +21,11 @@ export default function ProjectEpochCountdown() {
   })
 
   const [mounted, setMounted] = useState(false)
+  const [localDateTime, setLocalDateTime] = useState({
+    date: '',
+    time: '',
+    timezone: ''
+  })
 
   useEffect(() => {
     setMounted(true)
@@ -36,10 +41,33 @@ export default function ProjectEpochCountdown() {
     )
 
     const targetDate = new Date("2025-07-26T18:00:00+02:00")
+    const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
 
     const updateCountdown = () => {
-      const now = new Date().getTime()
-      const distance = targetDate.getTime() - now
+      const now = new Date()
+      const localDate = targetDate.toLocaleDateString('en-US', {
+        timeZone: userTimeZone,
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric'
+      })
+      const localTime = targetDate.toLocaleTimeString('en-US', {
+        timeZone: userTimeZone,
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: false
+      })
+      const timezoneName = new Intl.DateTimeFormat('en-US', {
+        timeZone: userTimeZone,
+        timeZoneName: 'short'
+      }).formatToParts().find(part => part.type === 'timeZoneName')?.value || ''
+
+      setLocalDateTime({
+        date: localDate,
+        time: localTime,
+        timezone: timezoneName
+      })
+      const distance = targetDate.getTime() - now.getTime()
 
       if (distance > 0) {
         setTimeLeft({
@@ -85,8 +113,8 @@ export default function ProjectEpochCountdown() {
       </div>
 
       <div className="text-center">
-        <div className="text-2xl md:text-4xl font-black mb-2">JULY 26, 2025</div>
-        <div className="text-xl md:text-3xl font-black text-red-500">18:00 CET</div>
+        <div className="text-2xl md:text-4xl font-black mb-2">{localDateTime.date.toUpperCase()}</div>
+        <div className="text-xl md:text-3xl font-black text-red-500">{localDateTime.time} {localDateTime.timezone}</div>
       </div>
     </div>
   )
